@@ -26,7 +26,7 @@ const users = sequelize.define("users", {
 	},
 	phone_no: {
 		type: DataTypes.CHAR(15),
-		allowNull: true,
+		allowNull: false,
 	},
 	password: {
 		type: Sequelize.STRING,
@@ -34,7 +34,8 @@ const users = sequelize.define("users", {
 	},
 	batch: {
 		type: Sequelize.STRING,
-		allowNull: false,
+		allowNull: true,
+		defaultValue: "A",
 	},
 	country: {
 		type: Sequelize.STRING,
@@ -51,6 +52,7 @@ const users = sequelize.define("users", {
 	userType: {
 		type: Sequelize.STRING,
 		allowNull: false,
+		defaultValue: "subscriber",
 	},
 });
 
