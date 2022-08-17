@@ -12,7 +12,7 @@ sequelize.sync().then(() => console.log("Dabase is ready to update users route")
 
 //GET all users
 router.get("/users", (req, res) => {
-	Users.findAll({})
+	Users.findAll({ attributes: ["name", "email", "home_address", "phone_no", "stack", "batch"] })
 		.then((result) => {
 			res.status(200).json(result);
 		})
