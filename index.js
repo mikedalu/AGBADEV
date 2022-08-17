@@ -16,4 +16,13 @@ app.use(signup);
 app.use(login);
 app.use(logout);
 
+// const os = require("os");
+// const time = () => {
+// 	setTimeout(() => {
+// 		console.log(os.uptime());
+// 		time();
+// 	}, 1000);
+// };
+// time();
+
 module.exports = app;

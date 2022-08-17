@@ -7,6 +7,7 @@ const users = sequelize.define("users", {
 		autoIncrement: true,
 		allowNull: false,
 		primaryKey: true,
+		unique: true,
 	},
 	name: {
 		type: Sequelize.STRING,
@@ -15,10 +16,13 @@ const users = sequelize.define("users", {
 	user_id: {
 		type: Sequelize.STRING,
 		allowNull: false,
+		defaultValue: DataTypes.UUIDV4,
+		unique: true,
 	},
 	email: {
 		type: Sequelize.STRING,
 		allowNull: false,
+		unique: true,
 	},
 	phone_no: {
 		type: DataTypes.CHAR(15),
