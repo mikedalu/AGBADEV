@@ -8,8 +8,15 @@ const login = require("./routes/login");
 const logout = require("./routes/logout");
 const app = express();
 
+//EJS setup
+const expressLayout = require("express-ejs-layouts");
+//EJS
+app.use(expressLayout);
+app.set("view engine", "ejs");
+
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
+
 app.use(users);
 app.use(home);
 app.use(signup);
@@ -20,6 +27,9 @@ app.use(logout);
 // const time = () => {
 // 	setTimeout(() => {
 // 		console.log(os.uptime());
+// 		for (let i = 0; i < 10000; i++) {
+// 			console.log(i);
+// 		}
 // 		time();
 // 	}, 1000);
 // };

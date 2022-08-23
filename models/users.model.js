@@ -9,15 +9,23 @@ const users = sequelize.define("users", {
 		primaryKey: true,
 		unique: true,
 	},
-	name: {
-		type: Sequelize.STRING,
-		allowNull: false,
-	},
 	user_id: {
 		type: Sequelize.STRING,
 		allowNull: false,
 		defaultValue: DataTypes.UUIDV4,
 		unique: true,
+	},
+	firstName: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	lastName: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	sex: {
+		type: DataTypes.CHAR(1),
+		allowNull: false,
 	},
 	email: {
 		type: Sequelize.STRING,
@@ -52,7 +60,11 @@ const users = sequelize.define("users", {
 	userType: {
 		type: Sequelize.STRING,
 		allowNull: false,
-		defaultValue: "subscriber",
+		defaultValue: "student",
+	},
+	verified: {
+		type: DataTypes.BOOLEAN,
+		defaultValue: false,
 	},
 });
 
