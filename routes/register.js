@@ -23,7 +23,7 @@ router.post("/signup", async (req, res) => {
 
 	let { firstName, lastName, email, phone_no, batch, country, home_address, stack, sex, userType } = await user;
 	if (firstName == "" || lastName == "" || email == "" || country == "" || home_address == "" || sex == "" || stack == "")
-		res.json({ status: "FAILED", message: "Empty fields!" });
+		return res.json({ status: "FAILED", message: "Empty fields!" });
 	//send verifcation email
 	Users.create({ firstName, lastName, email, phone_no, stack, password: cryptPass, batch, country, home_address, sex, userType })
 		.then((result) => {
@@ -41,8 +41,8 @@ router.post("/signup", async (req, res) => {
 					`,
 				};
 				//hash the uniqueString
-				const saltRounds = 10;
-				bcrypt.hash(uniqueString, saltRounds)
+				// const saltRounds = 10;
+				bcrypt.hash(uniqueString, 10)
 					.then((hashedUniqueString) => {
 						verifyEmail.create({ user_id: user_id, hashedUniqueString: hashedUniqueString });
 
@@ -70,10 +70,10 @@ router.post("/signup", async (req, res) => {
 		})
 		.catch((err) => {
 			res.status(403).json({
-				message: "Email already registered, login instead",
-				// message1: err.errors,
+				error: err,
 				// message2: err.original,
 			});
 		});
 });
+
 module.exports = router;
